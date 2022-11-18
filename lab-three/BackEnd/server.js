@@ -90,11 +90,22 @@ app.get('/hello/:name', (req, res) => {
     res.send('Hello '+req.params.name)
 })
 
+/* BOOKS DISPLAY AND DATA HANDLING */
+
 // GET request, returning the JSON
 app.get('/api/books', (req, res) => {
     // Find all records in database, return in JSON
     bookModel.find( (err, data) => {
         res.json(data);
+    })
+})
+
+// GET request, request data from the id
+app.get('/api/books/:id', (req, res)=> {
+    console.log(req.params.id);
+    // Find the record by ID, return the data requested
+    bookModel.findById(req.params.id, (err, data)=>{
+        res.send(data);
     })
 })
 

@@ -105,7 +105,7 @@ app.get('/api/books/:id', (req, res)=> {
     console.log(req.params.id);
     // Find the record by ID, return the data requested
     bookModel.findById(req.params.id, (err, data)=>{
-        res.send(data);
+        res.json(data);
     })
 })
 
@@ -125,6 +125,7 @@ app.post('/api/books', (req, res)=>{
 })
 
 /* FORM HANDLING */
+
 // GET request, for name
 app.get('/name', (req,res)=> {
     res.send('Hello '+req.query.f4rstName+' '+req.query.lastName);
